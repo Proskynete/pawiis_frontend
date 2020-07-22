@@ -1,0 +1,27 @@
+.screen {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  .login {
+    &__title {
+      text-align: center;
+
+      &__text {
+        font-weight: 400;
+        font-size: 24px;
+      }
+    }
+
+    &__form {
+      margin-top: 50px;
+
+      button {
+        margin-top: 20px;
+      }
+    }
+  }
+}
