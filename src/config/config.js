@@ -9,7 +9,7 @@ const handlers = {
 		return 'development';
 	},
 	handleGetEntryPointApi(path) {
-		return `/node/api${path}`;
+		return `/node/bff-web${path}`;
 	},
 };
 

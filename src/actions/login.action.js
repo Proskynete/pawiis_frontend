@@ -3,13 +3,13 @@ import { SIGN_IN_SUCCESS, SIGN_IN_ERROR } from '../config/constants';
 import { getUrl } from '../config/config';
 
 export const signInAction = (dispatch) => async (credentials) => {
+	const { email, password } = credentials;
 	const url = getUrl('/users/signin');
 
 	try {
-		const { data } = await axios(url, {
-			url,
-			method: 'POST',
-			body: JSON.stringify(credentials),
+		const { data } = await axios.post(url, {
+			email,
+			password,
 		});
 
 		localStorage.setItem('token', JSON.stringify(data.user.token));
