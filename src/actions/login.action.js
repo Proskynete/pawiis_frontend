@@ -15,16 +15,18 @@ export const signInAction = (dispatch) => async (credentials) => {
 		localStorage.setItem('token', JSON.stringify(data.user.token));
 		localStorage.setItem('role', JSON.stringify(data.user.role));
 
-		return dispatch({
+		dispatch({
 			type: SIGN_IN_SUCCESS,
 			payload: {
+				type: 'success',
 				logged_in: true,
 			},
 		});
 	} catch (error) {
-		return dispatch({
+		dispatch({
 			type: SIGN_IN_ERROR,
 			payload: {
+				type: 'error',
 				logged_in: false,
 				error_message:
 					'Error en el correo o la contraseña, verifíquelas e intente nuevamente',

@@ -7,7 +7,7 @@ import { signInAction } from '../../actions';
 import './index.scss';
 
 const LoginView = (props) => {
-	const { logged_in, error_message, signInMethod, history } = props;
+	const { logged_in, error_message, type, signInMethod, history } = props;
 	const [button, setButton] = useState(false);
 	const [credentials, setCredentials] = useState({
 		email: '',
@@ -30,7 +30,11 @@ const LoginView = (props) => {
 		if (logged_in) {
 			history.push('/');
 		}
-	}, [logged_in, error_message]);
+
+		if (!logged_in && type === 'error') {
+			setButton(false);
+		}
+	}, [logged_in, error_message, type]);
 
 	return (
 		<div className='screen'>
@@ -86,6 +90,7 @@ const LoginView = (props) => {
 LoginView.propTypes = {
 	logged_in: PropTypes.bool.isRequired,
 	error_message: PropTypes.string.isRequired,
+	type: PropTypes.string.isRequired,
 	signInMethod: PropTypes.func.isRequired,
 };
 
@@ -93,6 +98,7 @@ export default connect(
 	(state) => ({
 		logged_in: state.login.logged_in,
 		error_message: state.login.error_message,
+		type: state.login.type,
 	}),
 	(dispatch) => ({
 		signInMethod: signInAction(dispatch),
