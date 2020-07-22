@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import store from './store';
 import Presenter from './views';
 import './assets/scss/main.scss';
-
 import * as serviceWorker from './serviceWorker';
 
 const Main = () => (

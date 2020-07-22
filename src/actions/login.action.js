@@ -26,7 +26,7 @@ export const signInAction = (dispatch) => async (credentials) => {
 			type: SIGN_IN_ERROR,
 			payload: {
 				logged_in: false,
-				message:
+				error_message:
 					'Error en el correo o la contraseña, verifíquelas e intente nuevamente',
 			},
 		});

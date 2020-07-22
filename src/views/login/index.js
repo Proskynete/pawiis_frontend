@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
@@ -7,14 +7,12 @@ import { signInAction } from '../../actions';
 import './index.scss';
 
 const LoginView = (props) => {
-	const { signInMethod } = props;
-
+	const { logged_in, error_message, signInMethod, history } = props;
+	const [button, setButton] = useState(false);
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 	});
-
-	const [button, setButton] = useState(false);
 
 	const handleChangeInput = (e) => {
 		setCredentials({
@@ -27,6 +25,12 @@ const LoginView = (props) => {
 		setButton(true);
 		signInMethod(credentials);
 	};
+
+	useEffect(() => {
+		if (logged_in) {
+			history.push('/');
+		}
+	}, [logged_in, error_message]);
 
 	return (
 		<div className='screen'>
@@ -80,11 +84,16 @@ const LoginView = (props) => {
 };
 
 LoginView.propTypes = {
+	logged_in: PropTypes.bool.isRequired,
+	error_message: PropTypes.string.isRequired,
 	signInMethod: PropTypes.func.isRequired,
 };
 
 export default connect(
-	(state) => state,
+	(state) => ({
+		logged_in: state.login.logged_in,
+		error_message: state.login.error_message,
+	}),
 	(dispatch) => ({
 		signInMethod: signInAction(dispatch),
 	}),
