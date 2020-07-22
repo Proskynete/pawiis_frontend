@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Presenter from './views';
+import './assets/scss/main.scss';
 
 import * as serviceWorker from './serviceWorker';
 
