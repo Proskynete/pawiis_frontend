@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { Loader } from '../../components/loader';
+import { signInAction } from '../../actions';
 import './index.scss';
 
-const LoginView = () => {
+const LoginView = (props) => {
+	const { signInMethod } = props;
+
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 	});
+
 	const [button, setButton] = useState(false);
 
 	const handleChangeInput = (e) => {
@@ -19,6 +25,7 @@ const LoginView = () => {
 
 	const handleSubmit = () => {
 		setButton(true);
+		signInMethod(credentials);
 	};
 
 	return (
@@ -72,4 +79,13 @@ const LoginView = () => {
 	);
 };
 
-export default LoginView;
+LoginView.propTypes = {
+	signInMethod: PropTypes.func.isRequired,
+};
+
+export default connect(
+	(state) => state,
+	(dispatch) => ({
+		signInMethod: signInAction(dispatch),
+	}),
+)(LoginView);

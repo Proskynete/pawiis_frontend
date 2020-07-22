@@ -1,10 +1,17 @@
-export const config = {
-	handleGetUrl: () => {
+const handlers = {
+	handleGetUrl() {
 		const url = {
 			development: 'http://localhost:3000',
 		};
 		return url[this.handleGetEnvironment()];
 	},
-	handleGetEnvironment: () => 'development',
-	handleGetEntryPointApi: (path) => `/node/api/${path}`,
+	handleGetEnvironment() {
+		return 'development';
+	},
+	handleGetEntryPointApi(path) {
+		return `/node/api${path}`;
+	},
 };
+
+export const getUrl = (path) =>
+	`${handlers.handleGetUrl()}${handlers.handleGetEntryPointApi(path)}`;
