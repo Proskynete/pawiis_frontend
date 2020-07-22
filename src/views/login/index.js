@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { Loader } from '../../components/loader';
 import './index.scss';
 
 const LoginView = () => {
@@ -43,7 +44,7 @@ const LoginView = () => {
 									<Form.Group controlId='password'>
 										<Form.Control
 											type='password'
-											type='password'
+											name='password'
 											placeholder='*********'
 											onChange={handleChangeInput}
 										/>
@@ -55,7 +56,11 @@ const LoginView = () => {
 										block
 										onClick={handleSubmit}
 									>
-										{button ? 'Verificando...' : 'Iniciar sesión'}
+										{button ? (
+											<Loader text={'Verificando...'} />
+										) : (
+											'Iniciar sesión'
+										)}
 									</Button>
 								</Form>
 							</Card.Body>
