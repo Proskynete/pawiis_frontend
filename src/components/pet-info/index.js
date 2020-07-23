@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import _ from 'lodash';
 import { Container, Col, Row, Image, Card } from 'react-bootstrap';
 import './index.scss';
 
@@ -6,7 +7,9 @@ const PetInfo = (props) => {
 	const { image, name, age, sex } = props;
 
 	const handleShowName = () =>
-		sex === 'male' ? `El es ${name}` : `Ella es ${name}`;
+		sex === 'male'
+			? `El es ${_.upperFirst(name)}`
+			: `Ella es ${_.upperFirst(name)}`;
 
 	const handleShowAge = () => {
 		if (age <= 1) return `Es un cacharro`;
@@ -27,7 +30,7 @@ const PetInfo = (props) => {
 	return (
 		<Container>
 			<Row>
-				<Col xs={12} md={5}>
+				<Col xs={12}>
 					<div className='media'>
 						<Row>
 							<Col>

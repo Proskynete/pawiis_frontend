@@ -6,7 +6,7 @@ const Home = () => {
 	return (
 		<Container>
 			<Row>
-				<Col>
+				<Col xs>
 					<MyPet />
 				</Col>
 			</Row>
