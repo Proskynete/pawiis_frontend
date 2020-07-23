@@ -4,6 +4,21 @@
       &__title {
         font-size: 18px;
         font-weight: 300;
+
+        @media only screen and (max-width: 768px) {
+          margin-bottom: 0;
+        }
+      }
+
+      &__input-group,
+      &__button {
+        @media only screen and (max-width: 768px) {
+          margin-top: 10px;
+
+          &:first-of-type {
+            margin-top: 20px;
+          }
+        }
       }
     }
   }

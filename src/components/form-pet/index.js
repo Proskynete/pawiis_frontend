@@ -33,7 +33,11 @@ const FormPet = (props) => {
 						</p>
 						<Form>
 							<Form.Row>
-								<Col xs md={6}>
+								<Col
+									xs={12}
+									md={6}
+									className='form-pet__inner__container__input-group'
+								>
 									<Form.Control
 										type='text'
 										name='name'
@@ -42,7 +46,11 @@ const FormPet = (props) => {
 										onChange={handleChangeInputs}
 									/>
 								</Col>
-								<Col xs={6} md={2}>
+								<Col
+									xs={12}
+									md={2}
+									className='form-pet__inner__container__input-group'
+								>
 									<Form.Control
 										type='text'
 										name='age'
@@ -51,7 +59,11 @@ const FormPet = (props) => {
 										onChange={handleChangeInputs}
 									/>
 								</Col>
-								<Col xs={6} md={2}>
+								<Col
+									xs={12}
+									md={2}
+									className='form-pet__inner__container__input-group'
+								>
 									<Form.Control
 										name='sex'
 										as='select'
@@ -65,7 +77,11 @@ const FormPet = (props) => {
 									</Form.Control>
 								</Col>
 
-								<Col xs={12} md={2}>
+								<Col
+									xs={12}
+									md={2}
+									className='form-pet__inner__container__button'
+								>
 									<Button
 										block
 										variant='outline-secondary'
