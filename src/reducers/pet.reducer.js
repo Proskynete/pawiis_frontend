@@ -1,4 +1,9 @@
-import { CREATE_PET_SUCCESS, CREATE_PET_ERROR } from '../config/constants';
+import {
+	GET_PET_SUCCESS,
+	GET_PET_ERROR,
+	CREATE_PET_SUCCESS,
+	CREATE_PET_ERROR,
+} from '../config/constants';
 
 const initialState = {
 	type: '',
@@ -8,12 +13,14 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case CREATE_PET_SUCCESS:
+		case GET_PET_SUCCESS:
 			return {
 				...state,
 				type: action.payload.type,
 				pet: action.payload.pet,
 			};
 		case CREATE_PET_ERROR:
+		case GET_PET_ERROR:
 			return {
 				...state,
 				type: action.payload.type,
