@@ -65,7 +65,7 @@ const FormCreateNewPet = (props) => {
 									className='form-pet__inner__container__input-group'
 								>
 									<Form.Control
-										name='sex'
+										name='gender'
 										as='select'
 										className='mr-sm-2'
 										custom
