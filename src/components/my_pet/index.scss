@@ -1,0 +1,18 @@
+.my-pet {
+  &__inner {
+    &__title {
+      font-size: 28px;
+      font-weight: 500;
+    }
+
+    &__content {
+      &__button {
+        margin-top: 25px;
+      }
+
+      &__form {
+        margin-top: 25px;
+      }
+    }
+  }
+}

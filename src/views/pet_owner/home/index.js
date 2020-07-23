@@ -1,16 +1,13 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+import MyPet from '../../../components/my_pet';
 
 const Home = () => {
 	return (
 		<Container>
 			<Row>
 				<Col>
-					<Card>
-						<Card.Body>
-							<h1>Mi mascota</h1>
-						</Card.Body>
-					</Card>
+					<MyPet />
 				</Col>
 			</Row>
 		</Container>

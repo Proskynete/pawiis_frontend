@@ -20,7 +20,8 @@ body {
   background-color: $custom-grey;
   font-family: "Raleway";
 
-  div[role='menuitem'] {
+  div[role='menuitem'],
+  div[role='presentation'] {
     cursor: pointer;
   }
 }
