@@ -3,7 +3,7 @@ import React, { memo, useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 import { getPetAction } from '../../actions';
 import { Loader } from '../loader';
 import './index.scss';
@@ -30,7 +30,9 @@ const MyPet = (props) => {
 						<Suspense fallback={<Loader text='Buscando información...' />}>
 							{_.isEmpty(pet) ? <FormPet /> : <InfoPet {...pet} />}
 						</Suspense>
-						<div></div>
+						<Button variant='outline-info' onClick={() => {}}>
+							Agregar nueva información
+						</Button>
 					</Col>
 					<Col xs={12} md={6}>
 						<p className='my-pet__inner__title'>Información</p>

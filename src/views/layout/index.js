@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { roleRoutes } from '../../config/config-roles-per-role';
 import TopNavigation from '../../components/navbar';
+import ModalCreateInfoPet from '../../components/modal';
 import './index.scss';
 
 const AdminLayout = (props) => {
@@ -23,6 +24,7 @@ const AdminLayout = (props) => {
 		<Suspense fallback={'Cargando...'}>
 			<TopNavigation />
 			<section className='app_container'>
+				<ModalCreateInfoPet />
 				<Switch>
 					{menu}
 					<Redirect from='/' to='/dashboard' />
