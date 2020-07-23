@@ -1,16 +1,17 @@
-import React, { useState, memo, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { memo, useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Card, Button } from 'react-bootstrap';
-import FormPet from '../form-pet';
+import { Card } from 'react-bootstrap';
 import { getPetAction } from '../../actions';
+import { Loader } from '../loader';
 import './index.scss';
+
+const FormPet = lazy(() => import('../form-pet'));
 
 const MyPet = (props) => {
 	const { pet, getPetMethod } = props;
-
-	const [showCollapse, setShowCollapse] = useState(false);
 
 	useEffect(() => {
 		if (_.isEmpty(pet)) {
@@ -22,23 +23,9 @@ const MyPet = (props) => {
 		<Card className='my-pet'>
 			<Card.Body className='my-pet__inner'>
 				<p className='my-pet__inner__title'>Mi Peludito</p>
-				{_.isEmpty(pet) ? (
-					<section className='my-pet__inner__content'>
-						Aún no has ingresado la información de tu peludito o peludita...
-						<div className='my-pet__inner__content__button'>
-							<Button
-								variant='outline-info'
-								onClick={() => setShowCollapse(!showCollapse)}
-							>
-								Regístralo
-							</Button>
-							<FormPet
-								show={showCollapse}
-								classes='my-pet__inner__content__form'
-							/>
-						</div>
-					</section>
-				) : null}
+				<Suspense fallback={<Loader text='Buscando información...' />}>
+					{_.isEmpty(pet) ? <FormPet /> : null}
+				</Suspense>
 			</Card.Body>
 		</Card>
 	);
