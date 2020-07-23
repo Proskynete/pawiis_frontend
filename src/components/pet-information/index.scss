@@ -1,0 +1,40 @@
+.timeline {
+	width: 100%;
+	max-height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid grey;
+		padding: 5px 10px;
+		margin-bottom: 10px;
+		border-radius: 5px;
+
+		&__header {
+			display: flex;
+			flex-direction: row;
+
+			&__create-at,
+			&__creator {
+				margin: 0;
+				padding: 0;
+			}
+		}
+
+		&__type {
+			font-size: 22px;
+			font-weight: 500;
+			margin: 0;
+			padding: 0;
+		}
+
+		&__description {
+			font-size: 18px;
+			font-weight: 300;
+			margin: 0;
+			padding: 0;
+		}
+	}
+}
