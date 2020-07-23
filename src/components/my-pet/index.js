@@ -17,7 +17,10 @@ const MyPet = (props) => {
 
 	useEffect(() => {
 		if (_.isEmpty(pet)) {
-			getPetMethod(location.owner_id);
+			if (location) {
+				getPetMethod(location.owner_id);
+			}
+			getPetMethod();
 		}
 	}, [pet]);
 
