@@ -7,7 +7,13 @@ import {
 import { prettyType } from '../../helpers/pretty_type.helper';
 
 const CardInfoPet = (props) => {
-	const { created_at, owner_id, action_type, description } = props;
+	const currentUser = JSON.parse(localStorage.getItem('user'));
+	const { created_at, action_type, description } = props;
+
+	const handleShowCrreateBy = () =>
+		currentUser.role === 'pet_owner'
+			? 'Creado por el(la) dueño(a)'
+			: 'Creado por el veterinario';
 
 	return (
 		<article className='timeline__item'>
@@ -15,7 +21,9 @@ const CardInfoPet = (props) => {
 			<p className='timeline__item__description'>{description}</p>
 
 			<div className='timeline__item__bottom'>
-				<p className='timeline__item__bottom__creator'>{owner_id}</p>
+				<p className='timeline__item__bottom__creator'>
+					{handleShowCrreateBy()}
+				</p>
 
 				<time
 					dateTime={onlyDate(created_at)}
