@@ -31,14 +31,19 @@ const PetInfo = (props) => {
 					<div className='media'>
 						<Row>
 							<Col>
-								<Card className='mb-2'>
+								<Card
+									className='mb-2'
+									bg={sex === 'male' ? 'info' : 'danger'}
+									text='white'
+								>
 									<Card.Body>
 										<Row>
 											<Col xs={12} md={4}>
 												<Image
 													src={image}
-													className='mx-auto d-block'
+													className='mx-auto d-block border border-dark'
 													alt={`Foto de ${name}`}
+													roundedCircle
 													style={{ maxWidth: '80%' }}
 												/>
 											</Col>
