@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { Loader } from '../loader';
 import { createNewPetAction } from '../../actions';
 import './index.scss';
 
 const FormPet = (props) => {
-	const { show, classes } = props;
+	const { show, classes, createNewPetMethod } = props;
 	const [petInfo, setPetInfo] = useState({});
 	const [button, setButton] = useState(false);
 
@@ -18,7 +20,7 @@ const FormPet = (props) => {
 
 	const handleSubmitPet = () => {
 		setButton(true);
-		console.log(petInfo);
+		createNewPetMethod(petInfo);
 	};
 
 	return (
@@ -81,4 +83,13 @@ const FormPet = (props) => {
 	);
 };
 
-export default FormPet;
+FormPet.propTypes = {
+	createNewPetMethod: PropTypes.func.isRequired,
+};
+
+export default connect(
+	(state) => console.log(state),
+	(dispatch) => ({
+		createNewPetMethod: createNewPetAction(dispatch),
+	}),
+)(memo(FormPet));
