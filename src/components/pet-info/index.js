@@ -10,8 +10,8 @@ const PetInfo = (props) => {
 
 	const handleShowAge = () => {
 		if (age <= 1) return `Es un cacharro`;
-		else if (age > 1 <= 3) return 'Es un adolecente';
-		else if (age > 3 <= 9) return 'Es un adulto';
+		else if (age > 1 && age <= 3) return 'Es un adolecente';
+		else if (age > 3 && age <= 9) return 'Es un adulto';
 		else return 'Es un adulto mayor';
 	};
 
