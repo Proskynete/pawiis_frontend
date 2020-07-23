@@ -88,7 +88,7 @@ FormPet.propTypes = {
 };
 
 export default connect(
-	(state) => console.log(state),
+	(state) => ({ state }),
 	(dispatch) => ({
 		createNewPetMethod: createNewPetAction(dispatch),
 	}),
