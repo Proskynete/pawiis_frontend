@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import { Loader } from '../../components/loader';
 import { signInAction } from '../../actions';
 import './index.scss';
 
 const LoginView = (props) => {
-	const { logged_in, error_message, type, signInMethod, history } = props;
+	const { user, signInMethod } = props;
 	const [button, setButton] = useState(false);
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
 	});
+
+	const history = useHistory();
 
 	const handleChangeInput = (e) => {
 		setCredentials({
@@ -27,14 +31,12 @@ const LoginView = (props) => {
 	};
 
 	useEffect(() => {
-		if (logged_in) {
-			history.push('/');
-		}
+		const role = localStorage.getItem('role');
 
-		if (!logged_in && type === 'error') {
-			setButton(false);
+		if (role) {
+			history.go();
 		}
-	}, [logged_in, error_message, type]);
+	}, [user]);
 
 	return (
 		<div className='screen'>
@@ -88,19 +90,15 @@ const LoginView = (props) => {
 };
 
 LoginView.propTypes = {
-	logged_in: PropTypes.bool.isRequired,
-	error_message: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired,
+	user: PropTypes.shape({}).isRequired,
 	signInMethod: PropTypes.func.isRequired,
 };
 
 export default connect(
 	(state) => ({
-		logged_in: state.login.logged_in,
-		error_message: state.login.error_message,
-		type: state.login.type,
+		user: state.login.user,
 	}),
 	(dispatch) => ({
 		signInMethod: signInAction(dispatch),
 	}),
-)(LoginView);
+)(memo(LoginView));

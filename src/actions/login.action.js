@@ -15,15 +15,16 @@ export const signInAction = (dispatch) => async (credentials) => {
 		localStorage.setItem('token', JSON.stringify(data.user.token));
 		localStorage.setItem('role', JSON.stringify(data.user.role));
 
-		dispatch({
+		return dispatch({
 			type: SIGN_IN_SUCCESS,
 			payload: {
 				type: 'success',
+				user: data.user,
 				logged_in: true,
 			},
 		});
 	} catch (error) {
-		dispatch({
+		return dispatch({
 			type: SIGN_IN_ERROR,
 			payload: {
 				type: 'error',
