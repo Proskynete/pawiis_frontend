@@ -1,12 +1,2 @@
-import { lazy } from 'react';
-
-const LoginView = lazy(() => import('../views/login'));
-
-export const routes = [
-	{
-		path: '/login',
-		name: 'login',
-		exact: true,
-		component: LoginView,
-	},
-];
+export * from './veterinarian';
+export * from './pet_owner';
