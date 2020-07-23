@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Row, Col, Card, Button } from 'react-bootstrap';
-import { getPetAction } from '../../actions';
+import { getPetAction, showModalAction } from '../../actions';
 import { Loader } from '../loader';
 import './index.scss';
 
@@ -13,7 +13,7 @@ const InfoPet = lazy(() => import('../pet-info'));
 const PetInformation = lazy(() => import('../pet-information'));
 
 const MyPet = (props) => {
-	const { pet, getPetMethod } = props;
+	const { pet, getPetMethod, showModalMethod } = props;
 
 	useEffect(() => {
 		if (_.isEmpty(pet)) {
@@ -30,7 +30,12 @@ const MyPet = (props) => {
 						<Suspense fallback={<Loader text='Buscando información...' />}>
 							{_.isEmpty(pet) ? <FormPet /> : <InfoPet {...pet} />}
 						</Suspense>
-						<Button variant='outline-info' onClick={() => {}}>
+						<Button
+							variant='outline-info'
+							onClick={() => {
+								showModalMethod();
+							}}
+						>
 							Agregar nueva información
 						</Button>
 					</Col>
@@ -51,6 +56,7 @@ const MyPet = (props) => {
 MyPet.propTypes = {
 	pet: PropTypes.shape({}).isRequired,
 	getPetMethod: PropTypes.func.isRequired,
+	showModalMethod: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -59,5 +65,6 @@ export default connect(
 	}),
 	(dispatch) => ({
 		getPetMethod: getPetAction(dispatch),
+		showModalMethod: showModalAction(dispatch),
 	}),
 )(memo(MyPet));
