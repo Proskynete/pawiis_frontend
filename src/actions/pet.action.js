@@ -4,23 +4,22 @@ import { getUrl } from '../config/config';
 
 export const createNewPetAction = (dispatch) => async (petData) => {
 	const { name, age, sex } = petData;
-	const currentUser = JSON.parse(localStorage.getItem('user'));
-	const url = getUrl('/users/signin');
+	const user = JSON.parse(localStorage.getItem('user'));
+	const url = getUrl('/pet');
 
 	try {
 		const { data } = await axios.post(url, {
 			name,
 			age,
 			sex,
-			owner: currentUser._id,
+			owner: user._id,
 		});
-
-		console.log(data);
 
 		return dispatch({
 			type: CREATE_PET_SUCCESS,
 			payload: {
 				type: 'success',
+				pet: data.pet,
 			},
 		});
 	} catch (error) {

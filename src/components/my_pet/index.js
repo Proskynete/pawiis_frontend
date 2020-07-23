@@ -40,7 +40,6 @@ MyPet.propTypes = {
 	petInfo: PropTypes.shape({}).isRequired,
 };
 
-export default connect(
-	(state) => ({ petInfo: state.pet.pet }),
-	(dispatch) => ({ dispatch }),
-)(memo(MyPet));
+export default connect((state) => ({
+	petInfo: state.pet.pet,
+}))(memo(MyPet));
