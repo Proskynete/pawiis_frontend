@@ -9,6 +9,7 @@ import { Loader } from '../loader';
 import './index.scss';
 
 const FormPet = lazy(() => import('../form-pet'));
+const InfoPet = lazy(() => import('../pet-info'));
 
 const MyPet = (props) => {
 	const { pet, getPetMethod } = props;
@@ -22,9 +23,9 @@ const MyPet = (props) => {
 	return (
 		<Card className='my-pet'>
 			<Card.Body className='my-pet__inner'>
-				<p className='my-pet__inner__title'>Mi Peludito</p>
+				<p className='my-pet__inner__title'>Mi Peludito(a)</p>
 				<Suspense fallback={<Loader text='Buscando información...' />}>
-					{_.isEmpty(pet) ? <FormPet /> : null}
+					{_.isEmpty(pet) ? <FormPet /> : <InfoPet {...pet} />}
 				</Suspense>
 			</Card.Body>
 		</Card>
