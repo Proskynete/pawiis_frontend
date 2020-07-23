@@ -12,8 +12,7 @@ export const signInAction = (dispatch) => async (credentials) => {
 			password,
 		});
 
-		localStorage.setItem('token', JSON.stringify(data.user.token));
-		localStorage.setItem('role', JSON.stringify(data.user.role));
+		localStorage.setItem('user', JSON.stringify(data.user));
 
 		return dispatch({
 			type: SIGN_IN_SUCCESS,

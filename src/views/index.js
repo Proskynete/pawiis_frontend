@@ -27,15 +27,14 @@ const menu = routes.map((route, index) => {
 });
 
 const App = () => {
-	const token = JSON.parse(localStorage.getItem('token'));
-	const role = JSON.parse(localStorage.getItem('role'));
+	const user = JSON.parse(localStorage.getItem('user'));
 
 	return (
 		<Suspense fallback={<Loader text='Cargando...' />}>
 			<Switch>
 				{menu}
-				{token && role ? (
-					<Route path='/' component={() => <AdminLayout role={role} />} />
+				{user && user.role ? (
+					<Route path='/' component={() => <AdminLayout role={user.role} />} />
 				) : (
 					<Route path='/login' component={LoginView} />
 				)}
