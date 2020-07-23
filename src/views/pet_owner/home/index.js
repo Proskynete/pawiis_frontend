@@ -1,7 +1,17 @@
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import MyPet from '../../../components/my-pet';
 
 const Home = () => {
-	return <h1>Home - Pet Owner</h1>;
+	return (
+		<Container>
+			<Row>
+				<Col xs>
+					<MyPet />
+				</Col>
+			</Row>
+		</Container>
+	);
 };
 
 export default Home;

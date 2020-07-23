@@ -12,8 +12,7 @@ export const signInAction = (dispatch) => async (credentials) => {
 			password,
 		});
 
-		localStorage.setItem('token', JSON.stringify(data.user.token));
-		localStorage.setItem('role', JSON.stringify(data.user.role));
+		localStorage.setItem('user', JSON.stringify(data.user));
 
 		return dispatch({
 			type: SIGN_IN_SUCCESS,
@@ -36,4 +35,6 @@ export const signInAction = (dispatch) => async (credentials) => {
 	}
 };
 
-export const logoutAction = (dispatch) => () => {};
+export const logoutAction = (dispatch) => () => {
+	localStorage.removeItem('user');
+};

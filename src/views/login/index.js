@@ -31,9 +31,9 @@ const LoginView = (props) => {
 	};
 
 	useEffect(() => {
-		const role = localStorage.getItem('role');
+		const userInfo = localStorage.getItem('user');
 
-		if (role) {
+		if (userInfo) {
 			history.go();
 		}
 	}, [user]);

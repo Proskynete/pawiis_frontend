@@ -1,0 +1,47 @@
+.timeline {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    padding: 5px 10px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+    &__header {
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      i {
+        margin-right: 5px;
+      }
+
+      &__create-at,
+      &__creator {
+        font-size: 12px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &__type {
+      font-size: 22px;
+      font-weight: 500;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__description {
+      font-size: 18px;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
