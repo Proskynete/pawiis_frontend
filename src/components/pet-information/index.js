@@ -11,7 +11,7 @@ const PetInformation = (props) => {
 	) : (
 		<section className='timeline'>
 			{information.map((info) => (
-				<CardInfoPet {...info} />
+				<CardInfoPet key={info._id} {...info} />
 			))}
 		</section>
 	);
