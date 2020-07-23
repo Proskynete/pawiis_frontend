@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import { Loader } from '../loader';
+import { createNewPetAction } from '../../actions';
 import './index.scss';
 
 const FormPet = (props) => {
@@ -42,7 +43,7 @@ const FormPet = (props) => {
 								<Col xs={6} md={2}>
 									<Form.Control
 										type='text'
-										name='year'
+										name='age'
 										placeholder='Tiene x años'
 										autoComplete='off'
 										onChange={handleChangeInputs}
