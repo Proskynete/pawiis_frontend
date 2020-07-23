@@ -35,4 +35,6 @@ export const signInAction = (dispatch) => async (credentials) => {
 	}
 };
 
-export const logoutAction = (dispatch) => () => {};
+export const logoutAction = (dispatch) => () => {
+	localStorage.removeItem('user');
+};
