@@ -1,11 +1,11 @@
 import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { hideModalAction } from '../../actions';
+import { hideModalAction, createNewLogAction } from '../../actions';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 const ModalCreateInfoPet = (props) => {
-	const { show, hideModalMethod } = props;
+	const { show, pet_data, hideModalMethod, createNewLogMethod } = props;
 	const [info, setInfo] = useState({});
 
 	const handleChangeInputs = (e) => {
@@ -16,7 +16,7 @@ const ModalCreateInfoPet = (props) => {
 	};
 
 	const handleSaveInformation = () => {
-		console.log(info);
+		createNewLogMethod({ ...info, ...pet_data });
 		hideModalMethod();
 	};
 
@@ -66,14 +66,18 @@ const ModalCreateInfoPet = (props) => {
 
 ModalCreateInfoPet.propTypes = {
 	show: PropTypes.bool.isRequired,
+	pet_data: PropTypes.shape({}).isRequired,
 	hideModalMethod: PropTypes.func.isRequired,
+	createNewLogMethod: PropTypes.func.isRequired,
 };
 
 export default connect(
 	(state) => ({
 		show: state.modal.show,
+		pet_data: state.modal.pet_data,
 	}),
 	(dispatch) => ({
 		hideModalMethod: hideModalAction(dispatch),
+		createNewLogMethod: createNewLogAction(dispatch),
 	}),
 )(memo(ModalCreateInfoPet));

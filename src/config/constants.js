@@ -17,3 +17,9 @@ export const CREATE_PET_ERROR = 'CREATE_PET_ERROR';
  */
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const HIDE_MODAL = 'HIDE_MODAL';
+
+/**
+ * Log actions
+ */
+export const CREATE_LOG_SUCCESS = 'CREATE_LOG_SUCCESS';
+export const CREATE_LOG_ERROR = 'CREATE_LOG_ERROR';

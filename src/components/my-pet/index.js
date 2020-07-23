@@ -33,7 +33,7 @@ const MyPet = (props) => {
 						<Button
 							variant='outline-info'
 							onClick={() => {
-								showModalMethod();
+								showModalMethod({ id_pet: pet._id, id_owner: pet.owner });
 							}}
 						>
 							Agregar nueva información
@@ -43,7 +43,7 @@ const MyPet = (props) => {
 						<p className='my-pet__inner__title'>Información</p>
 						<Suspense fallback={<Loader text='Buscando información...' />}>
 							{!_.isEmpty(pet) ? (
-								<PetInformation info={pet.information} name={pet.name} />
+								<PetInformation information={pet.information} name={pet.name} />
 							) : null}
 						</Suspense>
 					</Col>

@@ -1,10 +1,11 @@
 import { SHOW_MODAL, HIDE_MODAL } from '../config/constants';
 
-export const showModalAction = (dispatch) => () => {
+export const showModalAction = (dispatch) => (data) => {
 	return dispatch({
 		type: SHOW_MODAL,
 		payload: {
 			show: true,
+			pet_data: data,
 		},
 	});
 };

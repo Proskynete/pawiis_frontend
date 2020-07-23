@@ -7,7 +7,7 @@ const PetInformation = (props) => {
 	return _.isEmpty(information) ? (
 		<p>{_.upperFirst(name)} aún no tiene información.</p>
 	) : (
-		'Mucha información'
+		information.length
 	);
 };
 
