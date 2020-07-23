@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import MyPet from '../../../components/my_pet';
+import MyPet from '../../../components/my-pet';
 
 const Home = () => {
 	return (
