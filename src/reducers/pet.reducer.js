@@ -4,11 +4,14 @@ import {
 	CREATE_PET_SUCCESS,
 	CREATE_PET_ERROR,
 	CREATE_LOG_SUCCESS,
+	GET_ALL_PET_SUCCESS,
+	GET_ALL_PET_ERROR,
 } from '../config/constants';
 
 const initialState = {
 	type: '',
 	pet: {},
+	all_pets: [],
 };
 
 export default (state = initialState, action) => {
@@ -21,8 +24,15 @@ export default (state = initialState, action) => {
 				type: action.payload.type,
 				pet: action.payload.pet,
 			};
+		case GET_ALL_PET_SUCCESS:
+			return {
+				...state,
+				type: action.payload.type,
+				all_pets: action.payload.all_pets,
+			};
 		case CREATE_PET_ERROR:
 		case GET_PET_ERROR:
+		case GET_ALL_PET_ERROR:
 			return {
 				...state,
 				type: action.payload.type,

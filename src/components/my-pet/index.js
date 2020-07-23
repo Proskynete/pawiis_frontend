@@ -13,11 +13,11 @@ const InfoPet = lazy(() => import('../pet-info'));
 const PetInformation = lazy(() => import('../pet-information'));
 
 const MyPet = (props) => {
-	const { pet, getPetMethod, showModalMethod } = props;
+	const { pet, getPetMethod, showModalMethod, location } = props;
 
 	useEffect(() => {
 		if (_.isEmpty(pet)) {
-			getPetMethod();
+			getPetMethod(location.owner_id);
 		}
 	}, [pet]);
 
@@ -26,7 +26,7 @@ const MyPet = (props) => {
 			<Card.Body className='my-pet__inner'>
 				<Row>
 					<Col xs={12} md={6}>
-						<p className='my-pet__inner__title'>Mi Peludito(a)</p>
+						<p className='my-pet__inner__title'>Peludito(a)</p>
 						<Suspense fallback={<Loader text='Buscando información...' />}>
 							{_.isEmpty(pet) ? <FormPet /> : <InfoPet {...pet} />}
 						</Suspense>
